@@ -6,6 +6,7 @@
 <title>Acer Nitro V15</title>
 
 <style>
+/* ===== GLOBAL ===== */
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +17,6 @@
 body {
   background: #020617;
   color: #e5e7eb;
-  scroll-behavior: smooth; /* smooth scrolling */
 }
 
 /* ===== NAVBAR ===== */
@@ -35,12 +35,14 @@ nav ul {
   gap: 30px;
   padding: 15px;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 nav a {
   color: #e5e7eb;
   text-decoration: none;
   font-weight: 600;
+  transition: 0.3s;
 }
 
 nav a:hover {
@@ -58,17 +60,18 @@ nav a:hover {
   background:
     radial-gradient(circle at top, #22c55e33, transparent),
     linear-gradient(135deg, #020617, #020617);
+  padding: 0 20px;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: #22c55e;
   text-shadow: 0 0 30px #22c55e99;
 }
 
 .hero p {
   margin: 20px 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #9ca3af;
 }
 
@@ -82,6 +85,7 @@ nav a:hover {
   color: #020617;
   font-weight: bold;
   box-shadow: 0 0 20px #22c55eaa;
+  transition: 0.3s;
 }
 
 .hero button:hover {
@@ -110,6 +114,14 @@ nav a:hover {
   margin-bottom: 15px;
 }
 
+.card img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
 /* ===== LIST ===== */
 .specs li {
   list-style: none;
@@ -121,7 +133,7 @@ nav a:hover {
   color: #22c55e;
 }
 
-/* ===== PROS CONS ===== */
+/* ===== PROS & CONS ===== */
 .flex {
   display: flex;
   gap: 20px;
@@ -152,43 +164,51 @@ footer {
   border-top: 1px solid #1f2937;
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2.5rem; }
-  nav ul { flex-wrap: wrap; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .hero button { padding: 12px 25px; font-size: 0.9rem; }
+  .flex { flex-direction: column; }
+  .card { padding: 20px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
   <ul>
-    <li><a href="#hero">Home</a></li>
+    <li><a href="#overview">Home</a></li>
     <li><a href="#specs">Specs</a></li>
     <li><a href="#models">Models</a></li>
     <li><a href="#buy">Buy</a></li>
   </ul>
 </nav>
 
-<section class="hero" id="hero">
+<!-- HERO -->
+<section class="hero">
   <h1>Acer Nitro V15</h1>
   <p>Unleash Power. Dominate Games.</p>
-  <button onclick="location.href='#specs'">Explore Specs</button>
+  <button onclick="document.getElementById('specs').scrollIntoView({behavior: 'smooth'})">Explore Specs</button>
 </section>
 
+<!-- MAIN CONTENT -->
 <div class="container">
 
-  <!-- Overview -->
-  <div class="card">
+  <!-- OVERVIEW -->
+  <div class="card" id="overview">
     <h2>🔥 Overview</h2>
     <p>
       The Acer Nitro V15 delivers powerful gaming performance with
       high-refresh visuals, modern RTX graphics, and upgradeable hardware—
       perfect for gamers, students, coding, and creators.
     </p>
+    <img src="images/download.jpg" alt="Acer Nitro V15 Laptop">
   </div>
 
-  <!-- Key Specs -->
+  <!-- SPECIFICATIONS -->
   <div class="card" id="specs">
     <h2>⚙️ Key Specifications</h2>
     <ul class="specs">
@@ -200,21 +220,8 @@ footer {
     </ul>
   </div>
 
-  <!-- Models Section -->
+  <!-- PROS & CONS -->
   <div class="card" id="models">
-    <h2>💻 Models</h2>
-    <div class="flex" style="gap:20px; flex-wrap:wrap;">
-      <div class="box" style="background: #111; border:1px solid #22c55e; display:flex; justify-content:center; align-items:center;">
-        <img src="download.jpg" alt="Acer Nitro V15 Model 1" style="max-width:100%; border-radius:15px;">
-      </div>
-      <div class="box" style="background: #111; border:1px solid #22c55e; display:flex; justify-content:center; align-items:center;">
-        <img src="images.jpg" alt="Acer Nitro V15 Model 2" style="max-width:100%; border-radius:15px;">
-      </div>
-    </div>
-  </div>
-
-  <!-- Pros & Cons -->
-  <div class="card" id="buy">
     <h2>⭐ Pros & Cons</h2>
     <div class="flex">
       <div class="box pros">
@@ -235,10 +242,18 @@ footer {
     </div>
   </div>
 
+  <!-- BUY BUTTON -->
+  <div class="card" id="buy">
+    <h2>🛒 Buy Now</h2>
+    <p>Get your Acer Nitro V15 from official stores or online marketplaces:</p>
+    <button onclick="window.location.href='https://www.acer.com/ac/en/US/content/professional-laptop'">Buy Now</button>
+  </div>
+
 </div>
 
+<!-- FOOTER -->
 <footer>
-  © 2026 Acer Nitro V15 | Gaming Website
+  © 2026 Acer Nitro V15 | Gaming Website;@donbert
 </footer>
 
 </body>
