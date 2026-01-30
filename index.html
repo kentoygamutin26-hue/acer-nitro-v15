@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acer Nitro V15</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #020617;
+  color: #e5e7eb;
+  scroll-behavior: smooth; /* smooth scrolling */
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #020617cc;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #22c55e33;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  list-style: none;
+}
+
+nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #22c55e;
+}
+
+/* ===== HERO ===== */
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, #22c55e33, transparent),
+    linear-gradient(135deg, #020617, #020617);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  color: #22c55e;
+  text-shadow: 0 0 30px #22c55e99;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1.3rem;
+  color: #9ca3af;
+}
+
+.hero button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: #22c55e;
+  color: #020617;
+  font-weight: bold;
+  box-shadow: 0 0 20px #22c55eaa;
+}
+
+.hero button:hover {
+  transform: scale(1.1);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #020617;
+  border: 1px solid #22c55e33;
+  border-radius: 20px;
+  padding: 35px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+
+.card h2 {
+  color: #22c55e;
+  margin-bottom: 15px;
+}
+
+/* ===== LIST ===== */
+.specs li {
+  list-style: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #1f2937;
+}
+
+.specs strong {
+  color: #22c55e;
+}
+
+/* ===== PROS CONS ===== */
+.flex {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.box {
+  flex: 1;
+  padding: 25px;
+  border-radius: 18px;
+}
+
+.pros {
+  border: 1px solid #22c55e;
+  background: #052e16;
+}
+
+.cons {
+  border: 1px solid #ef4444;
+  background: #2e0a0a;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+  border-top: 1px solid #1f2937;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.5rem; }
+  nav ul { flex-wrap: wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#specs">Specs</a></li>
+    <li><a href="#models">Models</a></li>
+    <li><a href="#buy">Buy</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <h1>Acer Nitro V15</h1>
+  <p>Unleash Power. Dominate Games.</p>
+  <button onclick="location.href='#specs'">Explore Specs</button>
+</section>
+
+<div class="container">
+
+  <!-- Overview -->
+  <div class="card">
+    <h2>🔥 Overview</h2>
+    <p>
+      The Acer Nitro V15 delivers powerful gaming performance with
+      high-refresh visuals, modern RTX graphics, and upgradeable hardware—
+      perfect for gamers, students, coding, and creators.
+    </p>
+  </div>
+
+  <!-- Key Specs -->
+  <div class="card" id="specs">
+    <h2>⚙️ Key Specifications</h2>
+    <ul class="specs">
+      <li><strong>Display:</strong> 15.6″ FHD IPS, up to 165Hz</li>
+      <li><strong>CPU:</strong> Intel i5-13420H / Ryzen 5 6600H</li>
+      <li><strong>GPU:</strong> NVIDIA GeForce RTX 4050</li>
+      <li><strong>RAM:</strong> Up to 16GB DDR5</li>
+      <li><strong>Storage:</strong> 512GB NVMe SSD</li>
+    </ul>
+  </div>
+
+  <!-- Models Section -->
+  <div class="card" id="models">
+    <h2>💻 Models</h2>
+    <div class="flex" style="gap:20px; flex-wrap:wrap;">
+      <div class="box" style="background: #111; border:1px solid #22c55e; display:flex; justify-content:center; align-items:center;">
+        <img src="download.jpg" alt="Acer Nitro V15 Model 1" style="max-width:100%; border-radius:15px;">
+      </div>
+      <div class="box" style="background: #111; border:1px solid #22c55e; display:flex; justify-content:center; align-items:center;">
+        <img src="images.jpg" alt="Acer Nitro V15 Model 2" style="max-width:100%; border-radius:15px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Pros & Cons -->
+  <div class="card" id="buy">
+    <h2>⭐ Pros & Cons</h2>
+    <div class="flex">
+      <div class="box pros">
+        <h3>✔ Pros</h3>
+        <ul>
+          <li>Excellent 1080p gaming</li>
+          <li>High refresh-rate display</li>
+          <li>Upgradeable RAM & SSD</li>
+        </ul>
+      </div>
+      <div class="box cons">
+        <h3>✖ Cons</h3>
+        <ul>
+          <li>Fans can be loud</li>
+          <li>Average battery life</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Acer Nitro V15 | Gaming Website
+</footer>
+
+</body>
+</html>
