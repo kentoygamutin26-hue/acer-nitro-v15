@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine for Erica 💜</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6a0dad, #d291bc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  /* ===== STARS ===== */
+  .stars { position: fixed; width: 100%; height: 100%; top:0; left:0; z-index:0; overflow:hidden; }
+  .star { position:absolute; width:3px; height:3px; background:white; border-radius:50%; opacity:0.7; animation:twinkle 2s infinite alternate; }
+  @keyframes twinkle { from {opacity:0.2; transform:scale(0.8);} to{opacity:1; transform:scale(1.3);} }
+
+  /* ===== CARDS ===== */
+  .card { position:relative; z-index:5; background:rgba(255,255,255,0.95); color:#111; width:360px; padding:25px; border-radius:25px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.4); display:none; }
+  .card.active { display:block; }
+  h1 { color:#9b30ff; margin-bottom:10px; }
+  p.message { text-align:left; font-size:14px; line-height:1.5; margin-top:10px; white-space:pre-line; }
+  button { padding:12px 22px; border:none; border-radius:25px; font-size:16px; background:#9b30ff; color:white; cursor:pointer; margin-top:15px; transition:0.3s; }
+  button:hover{background:#7b12d8;} 
+  button:disabled{background:gray; cursor:not-allowed;}
+
+  /* ===== FLOATING TULIPS ===== */
+  .tulip {
+    position:absolute;
+    font-size:24px;
+    animation: floatUp linear forwards;
+    pointer-events:none;
+    z-index:1;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity:1; }
+    100% { transform: translateY(-10vh) rotate(360deg) scale(1.3); opacity:0; }
+  }
+
+  /* ===== CONFETTI ===== */
+  .confetti { position:absolute; width:8px; height:14px; opacity:0.9; animation:fall 3s linear forwards; z-index:10; }
+  @keyframes fall { from {transform:translateY(-20px) rotate(0deg); opacity:1;} to{transform:translateY(100vh) rotate(720deg); opacity:0;} }
+
+  /* ===== YES NO BUTTONS ===== */
+  .btnRow { display:flex; justify-content:center; gap:15px; margin-top:20px; }
+  #noBtn { position: relative; }
+</style>
+</head>
+<body>
+
+<!-- STARS -->
+<div class="stars" id="stars"></div>
+
+<!-- PAGE 1 -->
+<div class="card active" id="page1">
+  <h1>Happy Valentine’s 💜</h1>
+  <p>Hi <strong>Erica</strong> 💫<br>You make my days brighter.</p>
+  <button id="startButton">Start 💜</button>
+  <p style="margin-top:15px;">— From: <strong>YOUR NAME</strong></p>
+  <img id="myPhoto" src="images/1000010136.jpg" alt="Me" 
+style="width:30vw; max-width:150px; height:auto; border-radius:50%; margin-top:15px; border:3px solid #ffb3e6;">
+
+
+<!-- PAGE 2 -->
+<div class="card" id="page2">
+  <h1>Erica 💜</h1>
+  <p style="font-size:16px;">Will you be my Valentine? 🌹✨</p>
+  <div class="btnRow">
+    <button id="yesBtn">Yes 💜</button>
+    <button id="noBtn">No 😭</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card" id="page3">
+  <h1>YAYYY 💜🥹</h1>
+  <p class="message">
+I just want you to know how truly thankful I am to have you in my life. Even when we can’t talk every day, you’re always in my thoughts and in my heart. You still bring comfort, happiness, and light into my world in ways you might not even realize.
+
+Every moment we do share means so much to me, and I appreciate them more than words can say. You remind me that connection isn’t measured by time or distance, but by how someone makes you feel. Thank you for being patient, kind, and understanding, and for simply being you.
+
+I’m grateful for you, for the smiles you give me, and for the warmth you bring into my life. No matter how busy things get or how quiet some days are, I’m thankful that you’re part of my life, and I always will be. 🌷💜
+</p>
+  <button onclick="location.reload()">Replay 🔁</button>
+</div>
+
+<script>
+  // ===== STARS =====
+  const starsBox = document.getElementById("stars");
+  for(let i=0;i<80;i++){
+    const star = document.createElement("div");
+    star.className="star";
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+    star.style.animationDuration=(1+Math.random()*3)+"s";
+    starsBox.appendChild(star);
+  }
+
+  // ===== VARIABLES =====
+  const startButton=document.getElementById("startButton");
+  const page1=document.getElementById("page1");
+  const page2=document.getElementById("page2");
+  const page3=document.getElementById("page3");
+  const yesBtn=document.getElementById("yesBtn");
+  const noBtn=document.getElementById("noBtn");
+
+  // ===== TULIPS ANIMATION =====
+  function spawnTulip() {
+    const colors=["#ff4da6","#ff80bf","#ff99cc","#ffb3e6","#ffccee"];
+    const tulip = document.createElement("div");
+    tulip.className="tulip";
+    tulip.innerHTML="🌷";
+    tulip.style.left=Math.random()*100+"vw";
+    tulip.style.fontSize=(20+Math.random()*30)+"px";
+    tulip.style.color=colors[Math.floor(Math.random()*colors.length)];
+    tulip.style.animationDuration=(4+Math.random()*4)+"s"; // random speed
+    document.body.appendChild(tulip);
+    setTimeout(()=>tulip.remove(),8000);
+  }
+
+  setInterval(spawnTulip, 400);
+
+  // ===== START BUTTON =====
+  startButton.addEventListener("click",()=>{
+    startButton.disabled=true;
+    startButton.innerText="Sending Tulips... 🌷";
+
+    setTimeout(()=>{
+      page1.classList.remove("active");
+      page2.classList.add("active");
+    },10000);
+  });
+
+  // ===== YES BUTTON =====
+  yesBtn.addEventListener("click",()=>{
+    page2.classList.remove("active");
+    page3.classList.add("active");
+    confettiBoom();
+  });
+
+  // ===== NO BUTTON =====
+  noBtn.addEventListener("mouseover",()=>{
+    const parentWidth = window.innerWidth - noBtn.offsetWidth;
+    const parentHeight = window.innerHeight - noBtn.offsetHeight;
+    noBtn.style.position="absolute";
+    noBtn.style.left = Math.random() * parentWidth + "px";
+    noBtn.style.top = Math.random() * parentHeight + "px";
+  });
+
+  // ===== CONFETTI =====
+  function confettiBoom(){
+    const colors=["#ff6f91","#ff9a8b","#c77dff","#9b30ff","#ffd6ff","#ffffff"];
+    for(let i=0;i<60;i++){
+      const conf=document.createElement("div");
+      conf.className="confetti";
+      conf.style.left=Math.random()*100+"vw";
+      conf.style.background=colors[Math.floor(Math.random()*colors.length)];
+      conf.style.animationDuration=(2+Math.random()*2)+"s";
+      conf.style.transform=`rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(conf);
+      setTimeout(()=>conf.remove(),4000);
+    }
+  }
+</script>
+</body>
+</html>
